@@ -1,7 +1,7 @@
 
 
 const Footer = () => {
-  const toolsUsed = ['React', 'Vite', 'Tailwind CSS', 'Framer Motion', 'React Hook Form'];
+  const toolsUsed = ['React', 'Vite', 'TailwindCSS', 'Framer Motion', 'React Hook Form'];
 
   return (
     <footer className="bg-gray-800 text-white py-4">

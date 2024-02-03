@@ -22,7 +22,7 @@ const Education = () => {
   ];
 
   return (
-    <section className="bg-gray-200 py-16 px-2">
+    <section className="bg-gray-200 py-16 px-2 mb-1">
       <div className="container mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
