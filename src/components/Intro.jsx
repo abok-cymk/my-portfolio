@@ -64,7 +64,7 @@ const Intro = () => {
         feeling of finally figuring out a solution to a problem. My core stack
         is{" "}
         <span className="font-medium">
-          React, Next.js, Node.js, and MongoDB
+          React, Next.js, JavaScript, Node.js, and MongoDB
         </span>
         . I am also familiar with TypeScript and Prisma. I am always looking to
         learn new technologies. I am currently looking for a{" "}
