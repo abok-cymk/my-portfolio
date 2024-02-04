@@ -1,14 +1,28 @@
-
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { FaPaperPlane } from "react-icons/fa";
+import emailjs from 'emailjs-com'; // import EmailJS
 
 const Contact = () => {
   const { register, handleSubmit } = useForm();
+  const form = useRef(); // create a form reference
+
+  const sendEmail = (e) => {
+    // create a function to send the email
+    e.preventDefault();
+    emailjs.sendForm(`${import.meta.env.VITE_SERVICE_ID}`, `${import.meta.env.VITE_TEMPLATE_ID}`, form.current, `${import.meta.env.VITE_USER_ID}`)
+      .then((result) => {
+        console.log(result.text); // handle success
+      }, (error) => {
+        console.log(error.text); // handle error
+      });
+  };
 
   const onSubmit = (data) => {
     // Handle form submission here (e.g., send email, store data, etc.)
     console.log('Form data:', data);
+    sendEmail(); // call the email sending function
   };
 
   return (
@@ -29,7 +43,7 @@ const Contact = () => {
         </a>{" "}
         or through this form.
       </p>
-        <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
+        <form ref={form} onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
               Email
@@ -65,10 +79,10 @@ const Contact = () => {
           <div className="mb-4">
             <button
               type="submit"
-              className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 flex items-center"
+              className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 flex items-center gap-1"
             >
               <span>Submit</span>
-              <FaPaperPlane className="text-xs opacity-70 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <FaPaperPlane className="text-xs opacity-70" />
             </button>
           </div>
         </form>
@@ -78,5 +92,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
