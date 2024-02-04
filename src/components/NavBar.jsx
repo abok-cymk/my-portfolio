@@ -101,15 +101,15 @@ const Navbar = () => {
 
       <nav className="flex fixed top-[0.15rem] left-1/2 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:py-0">
         <button
-          className="block ml-4 sm:hidden" // show button on small screens, hide on large screens
-          onClick={() => setIsOpen(!isOpen)} // toggle menu open or closed on click
+          className="block ml-4 sm:hidden" 
+          onClick={() => setIsOpen(!isOpen)} 
         >
-          <CgFormatLeft className="absolute"/>
+          <CgFormatLeft className="absolute top-0 left-0"/>
         </button>
         <motion.ul
           className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-200 sm:w-[initial] sm:flex-nowrap sm:gap-5 sm:ml-0"
-          animate={isOpen ? "open" : "closed"} // animate navbar links based on menu status
-          variants={variants} // use framer-motion variants
+          animate={isOpen ? "open" : "closed"} 
+          variants={variants} 
         >
           {links.map((link) => (
             <motion.li
