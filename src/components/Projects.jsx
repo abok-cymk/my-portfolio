@@ -9,23 +9,24 @@ const Projects = () => {
         "The project idealy imitate the common currency exchange softwares, so I tried to make it as unique as possible by applying some features that have learnt recently like localStorage",
       link: "https://github.com/abok-cymk/currency-conversion.git",
       imageURL: "/static/images/currency-converter.png",
-      altMsg: "Project I worked on about currency converter"
+      altMsg: "Project I worked on about currency converter",
     },
     {
       title: "Movie App",
-      description: "This movie app I have created using an API, it allows users to search for movies using movie titles as keywords then the movie list is display and also there is pagination",
+      description:
+        "This movie app I have created using an API, it allows users to search for movies using movie titles as keywords then the movie list is display and also there is pagination",
       link: "https://github.com/abok-cymk/movie-app2.git",
       imageURL: "/static/images/movie-app.png",
-      altMsg: "Project using API to fetch movies and display"
+      altMsg: "Project using API to fetch movies and display",
     },
     {
       title: "Temperature Control",
-      description: "The temperature basically imitates temperature conditions where at specific temperatures the background of the temperature display changes built using vanilla JS, CSS and HTML",
+      description:
+        "The temperature basically imitates temperature conditions where at specific temperatures the background of the temperature display changes built using vanilla JS, CSS and HTML",
       link: "https://github.com/abok-cymk/temperature-control-app.git",
       imageURL: "/static/images/temp-control.png",
-      altMsg: "Project for temperature control app"
+      altMsg: "Project for temperature control app",
     },
-
   ];
 
   return (
@@ -57,10 +58,12 @@ const Projects = () => {
                 rel="noreferrer"
               >
                 <FaGithubSquare />
-                 <img src={project.imageURL} alt={project.altMsg}
-              className="mt-4 w-full h-64 object-cover object-top border-collapse rounded-t-lg shadow-2xl hidden sm:block"/>
+                <img
+                  src={project.imageURL}
+                  alt={project.altMsg}
+                  className="mt-4 w-full h-64 object-cover object-top border-collapse rounded-t-lg shadow-2xl hidden sm:block"
+                />
               </a>
-             
             </motion.div>
           ))}
         </div>
