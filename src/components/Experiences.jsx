@@ -17,6 +17,16 @@ const Experiences = () => {
       year: 'April-August 2024',
       description: `As a Computer Science student, I am actively seeking an industrial attachment opportunity to apply and enhance my academic knowledge in a real-world setting. Eager to acquire hands-on experience, I am open to training in various industry skills. With a solid foundation in computer science principles and a passion for learning, I am ready to contribute and grow within a dynamic work environment. Excited about the prospect of gaining practical insights and refining my skills, I am enthusiastic about the opportunity to contribute positively to a forward-thinking organization.`,
     },
+    {
+      title: 'Teaching Volunteer',
+      company: 'Nyalunya Secondary School',
+      year: 'August 2021-August 20/2023',
+      description: `Volunteering at my former high school during my long holidays break was a fulfilling experience where I had the opportunity
+      to teach Math, Chemistry and Business Studies. I enjoyed sharing my knowledge with students, making complex concepts
+      accessible. Teaching these subjects allowed me to contribute to their academic growth while gaining valuable communication and leadership skills.
+      It was a rewarding experience to see students grasp challenging topics in their studies.
+      Overall, volunteering at my former school was not only gratifying but also enhanced my passion for education and helping others succeed.`,
+    },
   ];
 
   return (
@@ -30,7 +40,7 @@ const Experiences = () => {
         >
           My Experience
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {experiences.map((experience, index) => (
             <motion.div
               key={index}

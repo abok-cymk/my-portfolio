@@ -9,38 +9,47 @@ const Skills = () => {
     {
       skillName: "JavaScript",
       icon: TbBrandJavascript,
+      color: "#f0db4f",
     },
     {
       skillName: "React",
       icon: FaReact,
+      color: "#61dafb",
     },
     {
       skillName: "Java",
       icon: FaJava,
+      color: "#007396",
     },
     {
       skillName: "Python",
       icon: FaPython,
+      color: "#3776ab",
     },
     {
       skillName: "HTML5",
       icon: FaHtml5,
+      color: "#e34f26",
     },
     {
       skillName: "CSS",
       icon: FaCss3,
+      color: "#264de4",
     },
     {
       skillName: "Tailwind CSS",
       icon: SiTailwindcss,
+      color: "#06b6d4",
     },
     {
       skillName: "Git",
       icon: FaGitSquare,
+      color: "#f05032",
     },
     {
       skillName: "MySQL",
       icon: SiMysql,
+      color: "#4479a1",
     },
   ];
 
@@ -64,7 +73,7 @@ const Skills = () => {
               exit={{ opacity: 0, y: 50 }}
               className="bg-white p-2 rounded-md shadow-md cursor-pointer"
             >
-              <p className="flex items-center justify-center gap-2 text-lg font-bold mb-2"><skill.icon  className='text-xl text-yellow-400'/>{skill.skillName}</p>
+              <p className="flex items-center justify-center gap-2 text-lg font-bold mb-2"><skill.icon  className='text-xl' color={skill.color}/>{skill.skillName}</p>
             </motion.div>
           ))}
         </div>
