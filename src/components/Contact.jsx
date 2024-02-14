@@ -1,16 +1,58 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { FaPaperPlane } from "react-icons/fa";
 import emailjs from 'emailjs-com'; // import EmailJS
 
 const Contact = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const { register, handleSubmit } = useForm();
   const form = useRef(); // create a form reference
 
-  const sendEmail = (e) => {
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'message':
+        setMessage(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const sendEmail = async (event) => {
     // create a function to send the email
-    e.preventDefault();
+    event.preventDefault();
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await emailjs.sendForm(`${import.meta.env.VITE_SERVICE_ID}`, `${import.meta.env.VITE_TEMPLATE_ID}`, event.target, `${import.meta.env.VITE_USER_ID}`);
+      if(response.status === 200) {
+        setName('');
+        setEmail('');
+        setMessage('');
+        console.log('Message sent successfully!');
+      }
+      else {
+        throw new Error(`Failed to send message: ${response.text}`);
+      }
+    } catch(error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false)
+    }
     emailjs.sendForm(`${import.meta.env.VITE_SERVICE_ID}`, `${import.meta.env.VITE_TEMPLATE_ID}`, form.current, `${import.meta.env.VITE_USER_ID}`)
       .then((result) => {
         console.log(result.text); // handle success
@@ -43,39 +85,56 @@ const Contact = () => {
         </a>{" "}
         or through this form.
       </p>
+
+      {error && (
+          <motion.div className="text-red-500 mb-4" animate={{ y: [0, 10, 0], duration: 0.3 }}>
+            {error}
+          </motion.div>
+        )}
         <form ref={form} onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
+        <motion.div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+              Name
+            </label>
+            <motion.input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="name"
+              type="text"
+              placeholder="Your name"
+              value={name}
+              onChange={handleInputChange}
+              name="name"
+              animate={{ scale: isLoading ? 0.9 : 1 }}
+            />
+          </motion.div>
+
+          <motion.div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
               Email
             </label>
-            <input
-              type="email"
+            <motion.input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
-              {...register('email', { required: 'Email is required' })}
-              className="border rounded-md py-2 px-3 w-full"
+              type="email"
+              placeholder="your@email.com"
+              value={email}
+              onChange={handleInputChange}
+              name="email"
+              animate={{ scale: isLoading ? 0.9 : 1 }}
             />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="phone" className="block text-gray-700 text-sm font-bold mb-2">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              {...register('phone')}
-              className="border rounded-md py-2 px-3 w-full"
-            />
-          </div>
-          <div className="mb-4">
+          </motion.div>
+          <motion.div className="mb-4">
             <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">
               Message
             </label>
-            <textarea
+            <motion.textarea
               id="message"
               {...register('message', { required: 'Message is required' })}
-              className="border rounded-md py-2 px-3 w-full h-32"
-            ></textarea>
-          </div>
+              className="shadow appearance-none border rounded-md py-2 px-3 w-full h-32 focus:outline-none"
+              value={message}
+              onChange={handleInputChange}
+            ></motion.textarea>
+          </motion.div>
           <div className="mb-4">
             <button
               type="submit"

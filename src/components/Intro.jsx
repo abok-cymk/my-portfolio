@@ -98,7 +98,7 @@ const Intro = () => {
       <a href="https://facebook.com" target="_blank" rel="noreferrer">
               <AiFillFacebook  className="bg-gray-50 border border-cyan-50 rounded-full text-3xl text-gray-500"/>
       </a>
-      <a href="https://twitter.com" target="_blank" rel="noreferrer">
+      <a href="https://twitter.com/abokallan22" target="_blank" rel="noreferrer">
               <AiFillTwitterCircle  className="bg-gray-50 border border-cyan-50 text-3xl text-gray-500"/>
       </a>
       </div>
